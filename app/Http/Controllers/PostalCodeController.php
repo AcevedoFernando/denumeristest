@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PostalCodeRequest;
+use App\Imports\PostalCodesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PostalCodeController extends Controller
 {
@@ -22,9 +24,17 @@ class PostalCodeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostalCodeRequest $request)
     {
-        return 'store';
+        try {
+            Excel::import(new PostalCodesImport, $request->file('file'));
+            return response()->json(['success' => true], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'serverError' => [$e->getMessage()]
+            ], 500);
+        }
     }
 
     /**
