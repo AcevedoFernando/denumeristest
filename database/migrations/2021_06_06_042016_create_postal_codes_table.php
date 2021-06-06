@@ -14,19 +14,19 @@ class CreatePostalCodesTable extends Migration
     public function up()
     {
         Schema::create('postal_codes', function (Blueprint $table) {
-            $table->mediumInteger('code')->primary();
-            $table->string('suburb', 100);
-            $table->string('suburb_type', 100);
-            $table->string('township', 100);
-            $table->string('state', 100);
-            $table->string('city', 100);
-            $table->string('cp', 100);
-            $table->string('state_code', 20);
-            $table->string('office_code', 20);
-            $table->string('township_code', 20);
-            $table->string('suburb_code', 20);
-            $table->string('zone', 100);
-            $table->string('city_code', 20);
+            $table->string('code', 10);
+            $table->string('suburb', 100)->nullable();
+            $table->string('suburb_type', 100)->nullable();
+            $table->string('township', 100)->nullable();
+            $table->string('state', 100)->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('cp', 100)->nullable();
+            $table->string('state_code', 20)->nullable();
+            $table->string('office_code', 20)->nullable();
+            $table->string('township_code', 20)->nullable();
+            $table->string('suburb_code', 20)->nullable();
+            $table->string('zone', 100)->nullable();
+            $table->string('city_code', 20)->nullable();
         });
     }
 
