@@ -9,6 +9,8 @@ class PostalCode extends Model
 {
     use HasFactory;
 
+    protected $table = 'postal_codes';
+
     protected $fillable = [
         'code',
         'suburb',
@@ -24,4 +26,6 @@ class PostalCode extends Model
         'zone',
         'city_code'
     ];
+
+    public $timestamps = false;
 }
