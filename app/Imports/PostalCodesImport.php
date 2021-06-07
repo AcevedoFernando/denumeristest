@@ -38,21 +38,22 @@ class PostalCodesImport implements ToModel
             $this->skippedHeaders = true;
             $this->headers = $row;
         } else {
-            return new PostalCode([
-                'code' => $row[0],
-                'suburb' => $row[1],
-                'suburb_type' => $row[2],
-                'township' => $row[3],
-                'state' => $row[4],
-                'city' => $row[5],
-                'cp' => $row[6],
-                'state_code' => $row[7],
-                'office_code' => $row[8],
-                'township_code' => $row[10],
-                'suburb_code' => $row[11],
-                'zone' => $row[12],
-                'city_code' => $row[13]
-            ]);
+            if ($row[0])
+                return new PostalCode([
+                    'code' => $row[0],
+                    'suburb' => $row[1],
+                    'suburb_type' => $row[2],
+                    'township' => $row[3],
+                    'state' => $row[4],
+                    'city' => $row[5],
+                    'cp' => $row[6],
+                    'state_code' => $row[7],
+                    'office_code' => $row[8],
+                    'township_code' => $row[10],
+                    'suburb_code' => $row[11],
+                    'zone' => $row[12],
+                    'city_code' => $row[13]
+                ]);
         }
     }
 }
