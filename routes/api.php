@@ -19,4 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('postal-codes', PostalCodeController::class)->only('store', 'index', 'show');
+Route::prefix('v1')->group(function () {
+    Route::apiResource('postal-codes', PostalCodeController::class)->only('store', 'index', 'show');
+});
