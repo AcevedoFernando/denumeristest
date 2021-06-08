@@ -3,9 +3,11 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <span>Resultados <i class="fa fa-table"></i></span>
+                <!-- Results count -->
                 <span><i class="fa fa-hashtag"></i> {{ count }}</span>
             </div>
             <div class="card-body content__scroll">
+                <!-- Results table -->
                 <table class="table table-striped">
                     <thead>
                         <tr>
