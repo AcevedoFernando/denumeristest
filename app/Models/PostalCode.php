@@ -11,6 +11,7 @@ class PostalCode extends Model
 
     protected $table = 'postal_codes';
 
+    // postal code fields
     protected $fillable = [
         'code',
         'suburb',
