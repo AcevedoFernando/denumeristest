@@ -5,6 +5,7 @@
             <div class="card-body">
                 <form @submit.prevent="search">
                     <div class="row">
+                        <!-- State  -->
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="state">Estado</label>
@@ -17,6 +18,7 @@
                                 />
                             </div>
                         </div>
+                        <!-- Township -->
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="township">Municipio</label>
@@ -29,6 +31,7 @@
                                 />
                             </div>
                         </div>
+                        <!-- Order By -->
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="orderBy">Orden</label>
@@ -46,6 +49,7 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Submit Button -->
                         <div class="col-12">
                             <button
                                 type="button"
@@ -54,9 +58,9 @@
                                 :disabled="
                                     onSubmit ||
                                         form.state == null ||
-                                            form.state == '' ||
-                                            form.township == null ||
-                                                form.township == ''
+                                        form.state == '' ||
+                                        form.township == null ||
+                                        form.township == ''
                                 "
                             >
                                 {{ !onSubmit ? "Buscar" : null }}
@@ -81,6 +85,7 @@
 </template>
 
 <script>
+// Form Template
 const formTemplate = {
     state: null,
     township: null,

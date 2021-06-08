@@ -5,6 +5,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
+                        <!-- Map -->
                         <gmap-map
                             :center="center"
                             :zoom="zoom"
@@ -41,6 +42,7 @@ export default {
         this.$set(this, "zoom", 5);
     },
     methods: {
+        // Function to load Markers
         loadMarkers() {
             var point = {};
             this.markers = [];
@@ -55,6 +57,7 @@ export default {
                     });
                 }
             });
+            // Set Center and Zoom
             this.$set(this, "center", point);
             this.$set(this, "zoom", 8);
         }

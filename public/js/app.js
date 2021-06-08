@@ -1927,6 +1927,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+// Form Template
 var formTemplate = {
   state: null,
   township: null,
@@ -1996,6 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["results", "count"],
   data: function data() {
@@ -2012,6 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$set(this, "zoom", 5);
   },
   methods: {
+    // Function to load Markers
     loadMarkers: function loadMarkers() {
       var _this = this;
 
@@ -2028,7 +2035,8 @@ __webpack_require__.r(__webpack_exports__);
             position: point
           });
         }
-      });
+      }); // Set Center and Zoom
+
       this.$set(this, "center", point);
       this.$set(this, "zoom", 8);
     }
@@ -2053,6 +2061,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -2134,6 +2144,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2191,8 +2205,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.use(vuex__WEBPACK_IMPORTED_MODULE_3__.default);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_3__.default.Store(_store_index__WEBPACK_IMPORTED_MODULE_2__.default);
+Vue.use(vuex__WEBPACK_IMPORTED_MODULE_3__.default); // Create Store to handle Vuex
+
+var store = new vuex__WEBPACK_IMPORTED_MODULE_3__.default.Store(_store_index__WEBPACK_IMPORTED_MODULE_2__.default); // Maps requirements
+
 Vue.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_0__, {
   load: {
     key: 'AIzaSyBedBMVNjCuQGq6THJH0sduzLKJfo538Us',
@@ -2289,12 +2305,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   actions: {
     search: function search(context, form) {
-      context.commit("setOnSubmit", true);
+      // Set onSubmit flag
+      context.commit("setOnSubmit", true); // Request
+
       axios.get("/api/v1/postal-codes?limit=".concat(form.limit, "&orderBy=").concat(form.orderBy, "&state=").concat(form.state, "&township=").concat(form.township)).then(function (res) {
-        context.commit("setResults", res.data.results);
-        context.commit("setCount", Number(res.data.count));
+        // Set Results
+        context.commit("setResults", res.data.results); // Set results count
+
+        context.commit("setCount", Number(res.data.count)); // Set onSubmit flag
+
         context.commit("setOnSubmit", false);
       })["catch"](function () {
+        // Set onSubmit flag
         context.commit("setOnSubmit", false);
       });
     }

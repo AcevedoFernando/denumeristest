@@ -24,6 +24,7 @@
 
 <body style="background-color: #faedcd;">
     <div id="app">
+        <!-- Parent component for the view -->
         <view-component></view-component>
     </div>
 </body>

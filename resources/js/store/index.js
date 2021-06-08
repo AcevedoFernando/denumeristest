@@ -1,11 +1,9 @@
 export default {
-
     state: {
         results: [],
         onSubmit: false,
         count: 0
 	},
-
 	getters: {
         results(state) {
           return state.results
@@ -19,14 +17,20 @@ export default {
 	},
 	actions: {
         search(context, form) {
-          context.commit("setOnSubmit", true)
+            // Set onSubmit flag
+            context.commit("setOnSubmit", true)
+            // Request
           axios.get(`/api/v1/postal-codes?limit=${form.limit}&orderBy=${form.orderBy}&state=${form.state}&township=${form.township}`)
               .then(res => {
-                   context.commit("setResults", res.data.results)
-                   context.commit("setCount", Number(res.data.count))
+                  // Set Results
+                  context.commit("setResults", res.data.results)
+                  // Set results count
+                  context.commit("setCount", Number(res.data.count))
+                  // Set onSubmit flag
                    context.commit("setOnSubmit", false)
                })
-               .catch(() => {
+              .catch(() => {
+                  // Set onSubmit flag
                   context.commit("setOnSubmit", false)                  
                })
        }

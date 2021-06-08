@@ -29,11 +29,12 @@ import Store from './store/index'
 
 
 Vue.use(Vuex)
-
+// Create Store to handle Vuex
 const store = new Vuex.Store(
     Store
 )
 
+// Maps requirements
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBedBMVNjCuQGq6THJH0sduzLKJfo538Us',
