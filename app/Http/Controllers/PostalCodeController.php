@@ -24,16 +24,16 @@ class PostalCodeController extends Controller
 
             $postal_codes = PostalCode::select('code', 'township', 'state');
 
-            if ($state) $postal_codes->where('state', 'LIKE', '%' . $state . '%');
-            if ($township) $postal_codes->where('township', 'LIKE', '%' . $township . '%');
-
-
-            if (!$state && !$township)
+            if ($state == "null" && $township == "null")
                 $postal_codes->limit(100);
+            else {
+                $postal_codes->where('state', 'LIKE', '%' . $state . '%');
+                $postal_codes->where('township', 'LIKE', '%' . $township . '%');
+            }
 
             $postal_codes = $postal_codes->get();
 
-            $api_prices = json_decode(file_get_contents("https://api.datos.gob.mx/v2/precio.gasolina.publico?pageSize=1000"), true);
+            $api_prices = json_decode(file_get_contents("https://api.datos.gob.mx/v2/precio.gasolina.publico?pageSize=10000"), true);
 
             $prices = [];
 
